@@ -38,17 +38,17 @@
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="connectionProperties"></stringProp>
           <stringProp name="dataSource">dremio</stringProp>
-          <stringProp name="dbUrl">jdbc:dremio:direct=localhost:31010;disableTLS=true;schema=iceberg</stringProp>
+          <stringProp name="dbUrl">jdbc:dremio:direct=${__P(dremio.host,localhost)}:${__P(dremio.port,31010)};disableTLS=true;schema=${__P(dremio.schema,iceberg)}</stringProp>
           <stringProp name="driver">com.dremio.jdbc.Driver</stringProp>
           <stringProp name="initQuery"></stringProp>
           <boolProp name="keepAlive">true</boolProp>
-          <stringProp name="password">Rufus6861*</stringProp>
+          <stringProp name="password">${__P(dremio.password,)}</stringProp>
           <stringProp name="poolMax">1</stringProp>
           <boolProp name="preinit">false</boolProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
-          <stringProp name="username">nm</stringProp>
+          <stringProp name="username">${__P(dremio.username,)}</stringProp>
         </JDBCDataSource>
         <hashTree/>
         <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor">
@@ -143,7 +143,7 @@ log.debug(&quot;📝 Query starts with: &quot; + query.take(80).replaceAll(&quot
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">results/full_results.csv</stringProp>
+          <stringProp name="filename">${__P(results.file,results/full_results.csv)}</stringProp>
           <boolProp name="ResultCollector.success_only_logging">true</boolProp>
         </ResultCollector>
         <hashTree/>
