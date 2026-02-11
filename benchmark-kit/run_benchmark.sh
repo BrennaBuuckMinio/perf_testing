@@ -25,10 +25,8 @@ echo ""
 echo "[CONFIG] Loading environment from: $ENV_FILE"
 
 if [ ! -f "$ENV_FILE" ]; then
-    echo "[ERROR] .env file not found at $ENV_FILE"
-    echo "[ERROR] Please create a .env file in the project root."
-    exit 1
-fi
+    echo "[CONFIG] .env file not found at $ENV_FILE — skipping (using existing environment)"
+else
 
 while IFS='=' read -r key value; do
     [[ -z "$key" || "$key" =~ ^# ]] && continue
@@ -38,6 +36,7 @@ while IFS='=' read -r key value; do
 done < "$ENV_FILE"
 
 echo "[CONFIG] .env loaded successfully"
+fi
 echo ""
 
 # ---------------------------------------------------------------
