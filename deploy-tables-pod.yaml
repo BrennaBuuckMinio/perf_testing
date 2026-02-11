@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: deploy-tables-1tb
+  labels:
+    app: deploy-tables
+spec:
+  restartPolicy: Never
+  containers:
+    - name: deploy-tables
+      image: registry.min.dev/data-science/perf-testing:latest
+      imagePullPolicy: Always
+      command: ["python", "iceberg-kit/deploy_tables.py"]
+      env:
+        # S3 Configuration
+        - name: S3_ENDPOINT_URL
+          value: "http://compute-1.min.dc:30001"
+        - name: S3_ACCESS_KEY
+          value: "minio"
+        - name: S3_SECRET_KEY
+          value: ""
+        - name: S3_BUCKET_NAME
+          value: "tpcds"
+        - name: S3_FOLDER_NAME
+          value: "sample_1Tb"
+        # Iceberg Configuration
+        - name: ICEBERG_BUCKET_NAME
+          value: "iceberg"
+        - name: ICEBERG_FOLDER_NAME
+          value: "sample_1Tb"
+        # Dremio Configuration
+        - name: DREMIO_USERNAME
+          value: "pedro"
+        - name: DREMIO_PASSWORD
+          value: ""
+        - name: DREMIO_URL
+          value: "http://dremio-client.dremio-v26.svc.cluster.local:9047"
+        - name: DREMIO_SOURCE_NAME
+          value: tpcds
+        - name: NESSIE_SOURCE_NAME
+          value: "pedros nessie"
+        - name: DREMIO_JDBC_HOST
+          value: dremio-client.dremio-v26.svc.cluster.local
+        - name: DREMIO_JDBC_PORT
+          value: 31010
+        - name: BENCHMARK_BUCKET
+          value: benchmark_results
