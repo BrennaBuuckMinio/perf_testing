@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt requests
 # Copy the iceberg-kit directory
 COPY iceberg-kit/ ./iceberg-kit/
 COPY tpcds-kit/ ./tpcds-kit/
+COPY benchmark-kit/ ./benchmark-kit/
 
 # Set the working directory to where the script expects to run
 WORKDIR /app
