@@ -17,6 +17,11 @@ RUN curl -fsSL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${J
 RUN curl -fsSL -o ${JMETER_HOME}/lib/dremio-jdbc-driver-LATEST.jar \
     https://download.dremio.com/jdbc-driver/dremio-jdbc-driver-LATEST.jar
 
+# Install MinIO Client (mc) - arch-aware
+ARG TARGETARCH
+RUN curl -fsSL -o /usr/bin/mc https://dl.min.io/aistor/mc/release/linux-${TARGETARCH}/mc && \
+    chmod +x /usr/bin/mc
+
 WORKDIR /app
 
 # Copy requirements and install dependencies
