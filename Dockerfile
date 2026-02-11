@@ -1,5 +1,22 @@
 FROM python:3.11-slim
 
+# Install Java runtime and curl for downloads
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends default-jre curl && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install JMeter
+ENV JMETER_VERSION=5.6.3
+ENV JMETER_HOME=/opt/jmeter
+ENV PATH="${JMETER_HOME}/bin:${PATH}"
+ENV JVM_ARGS="-Dio.netty.tryReflectionSetAccessible=true --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
+RUN curl -fsSL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz | tar xz -C /opt && \
+    mv /opt/apache-jmeter-${JMETER_VERSION} ${JMETER_HOME}
+
+# Download Dremio JDBC driver into JMeter lib/
+RUN curl -fsSL -o ${JMETER_HOME}/lib/dremio-jdbc-driver-LATEST.jar \
+    https://download.dremio.com/jdbc-driver/dremio-jdbc-driver-LATEST.jar
+
 WORKDIR /app
 
 # Copy requirements and install dependencies
