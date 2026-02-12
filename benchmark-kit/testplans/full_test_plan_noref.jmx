@@ -38,9 +38,9 @@
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="connectionProperties"></stringProp>
           <stringProp name="dataSource">dremio</stringProp>
-          <stringProp name="dbUrl">jdbc:dremio:direct=${__P(dremio.host,localhost)}:${__P(dremio.port,31010)};disableTLS=true;schema=${__P(dremio.schema,iceberg)}</stringProp>
+          <stringProp name="dbUrl">jdbc:dremio:direct=${__P(dremio.host,localhost)}:${__P(dremio.port,31010)};disableTLS=true</stringProp>
           <stringProp name="driver">com.dremio.jdbc.Driver</stringProp>
-          <stringProp name="initQuery"></stringProp>
+          <stringProp name="initQuery">USE ${__P(dremio.schema,iceberg)}</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">${__P(dremio.password,)}</stringProp>
           <stringProp name="poolMax">1</stringProp>

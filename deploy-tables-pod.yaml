@@ -44,4 +44,4 @@ spec:
         - name: DREMIO_JDBC_PORT
           value: 31010
         - name: BENCHMARK_BUCKET
-          value: benchmark_results
+          value: benchmark-results

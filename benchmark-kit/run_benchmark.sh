@@ -73,7 +73,8 @@ echo ""
 # ---------------------------------------------------------------
 JDBC_SCHEMA="\"${NESSIE_SOURCE_NAME}\".${ICEBERG_FOLDER_NAME}"
 echo "[JDBC] Composed schema: ${JDBC_SCHEMA}"
-echo "[JDBC] Connection URL: jdbc:dremio:direct=${DREMIO_JDBC_HOST}:${DREMIO_JDBC_PORT:-31010};disableTLS=true;schema=${JDBC_SCHEMA}"
+echo "[JDBC] Connection URL: jdbc:dremio:direct=${DREMIO_JDBC_HOST}:${DREMIO_JDBC_PORT:-31010};disableTLS=true"
+echo "[JDBC] Init query: USE ${JDBC_SCHEMA}"
 echo ""
 
 # ---------------------------------------------------------------
@@ -132,6 +133,9 @@ echo ""
 # ---------------------------------------------------------------
 # Run JMeter
 # ---------------------------------------------------------------
+# Dremio JDBC driver requires access to internal Java APIs (Netty/Arrow on Java 17+)
+export JVM_ARGS="--add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/sun.misc=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED"
+
 echo "[JMETER] Starting JMeter..."
 echo "[JMETER] Test plan: $TEST_PLAN"
 echo "[JMETER] Results file: $RESULTS_FILE"
@@ -185,9 +189,9 @@ elif [ ! -f "$RESULTS_FILE" ]; then
 else
     echo "[UPLOAD] Uploading results to MinIO..."
     MC_ALIAS="benchmark-minio"
-    mc alias set "$MC_ALIAS" "$S3_ENDPOINT_URL" "$S3_ACCESS_KEY" "$S3_SECRET_KEY" --api S3v4 > /dev/null 2>&1
+    mc alias set "$MC_ALIAS" "$S3_ENDPOINT_URL" "$S3_ACCESS_KEY" "$S3_SECRET_KEY" --api S3v4 > /dev/null 2>&1 || true
 
-    mc mb --ignore-existing "${MC_ALIAS}/${BENCHMARK_BUCKET}" > /dev/null 2>&1
+    mc mb --ignore-existing "${MC_ALIAS}/${BENCHMARK_BUCKET}" > /dev/null 2>&1 || true
 
     RESULTS_BASENAME=$(basename "$RESULTS_FILE")
     if mc cp "$RESULTS_FILE" "${MC_ALIAS}/${BENCHMARK_BUCKET}/${RESULTS_BASENAME}"; then
