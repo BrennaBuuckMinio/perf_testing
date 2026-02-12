@@ -71,7 +71,7 @@ echo ""
 # ---------------------------------------------------------------
 # Compose JDBC schema
 # ---------------------------------------------------------------
-JDBC_SCHEMA="\"${NESSIE_SOURCE_NAME}\".${ICEBERG_FOLDER_NAME}"
+JDBC_SCHEMA="\"${NESSIE_SOURCE_NAME}\".\"${ICEBERG_FOLDER_NAME}\""
 echo "[JDBC] Composed schema: ${JDBC_SCHEMA}"
 echo "[JDBC] Connection URL: jdbc:dremio:direct=${DREMIO_JDBC_HOST}:${DREMIO_JDBC_PORT:-31010};disableTLS=true"
 echo "[JDBC] Init query: USE ${JDBC_SCHEMA}"
