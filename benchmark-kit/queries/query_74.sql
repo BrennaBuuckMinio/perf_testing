@@ -42,7 +42,7 @@ select sum (ss_quantity)
   ca_country = 'United States'
   and
   ca_state in ('OR', 'SD', 'FL')
-  and ss_net_profit between 0 and 2000  
+  and ss_net_profit between 0.00 and 2000.00
   )
  or
   (ss_addr_sk = ca_address_sk
@@ -50,7 +50,7 @@ select sum (ss_quantity)
   ca_country = 'United States'
   and
   ca_state in ('CO', 'MI', 'KY')
-  and ss_net_profit between 150 and 3000 
+  and ss_net_profit between 150.00 and 3000.00
   )
  or
   (ss_addr_sk = ca_address_sk
@@ -58,6 +58,6 @@ select sum (ss_quantity)
   ca_country = 'United States'
   and
   ca_state in ('AR', 'GA', 'MN')
-  and ss_net_profit between 50 and 25000 
+  and ss_net_profit between 50.00 and 25000.00
   )
  );

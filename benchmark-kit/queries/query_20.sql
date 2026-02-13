@@ -65,8 +65,8 @@ cross_sales as
          hd2.hd_income_band_sk = ib2.ib_income_band_sk and
          cd1.cd_marital_status <> cd2.cd_marital_status and
          i_color in ('light','cyan','burnished','green','almond','smoke') and
-         i_current_price between 22 and 22 + 10 and
-         i_current_price between 22 + 1 and 22 + 15
+         i_current_price between 22.00 and 32.00 and
+         i_current_price between 23.00 and 37.00
 group by i_product_name
        ,i_item_sk
        ,s_store_name

@@ -14,7 +14,7 @@ with ssr as
                   and DATE_ADD(cast('2002-08-04' as date), 30)
        and ss_store_sk = s_store_sk
        and ss_item_sk = i_item_sk
-       and i_current_price > 50
+       and i_current_price > 50.00
        and ss_promo_sk = p_promo_sk
        and p_channel_tv = 'N'
  group by s_store_id)
@@ -35,7 +35,7 @@ with ssr as
                   and DATE_ADD(cast('2002-08-04' as date), 30)
         and cs_catalog_page_sk = cp_catalog_page_sk
        and cs_item_sk = i_item_sk
-       and i_current_price > 50
+       and i_current_price > 50.00
        and cs_promo_sk = p_promo_sk
        and p_channel_tv = 'N'
 group by cp_catalog_page_id)
@@ -56,7 +56,7 @@ group by cp_catalog_page_id)
                   and DATE_ADD(cast('2002-08-04' as date), 30)
         and ws_web_site_sk = web_site_sk
        and ws_item_sk = i_item_sk
-       and i_current_price > 50
+       and i_current_price > 50.00
        and ws_promo_sk = p_promo_sk
        and p_channel_tv = 'N'
 group by web_site_id)

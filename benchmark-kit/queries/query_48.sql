@@ -23,10 +23,10 @@ select  channel, item, return_ratio, return_rank, currency_rank from
  			on (ws.ws_order_number = wr.wr_order_number and 
  			ws.ws_item_sk = wr.wr_item_sk)
                  ,date_dim
- 		where 
- 			wr.wr_return_amt > 10000 
- 			and ws.ws_net_profit > 1
-                         and ws.ws_net_paid > 0
+ 		where
+ 			wr.wr_return_amt > 10000.00
+ 			and ws.ws_net_profit > 1.00
+                         and ws.ws_net_paid > 0.00
                          and ws.ws_quantity > 0
                          and ws_sold_date_sk = d_date_sk
                          and d_year = 1998
@@ -66,10 +66,10 @@ select  channel, item, return_ratio, return_rank, currency_rank from
  			on (cs.cs_order_number = cr.cr_order_number and 
  			cs.cs_item_sk = cr.cr_item_sk)
                 ,date_dim
- 		where 
- 			cr.cr_return_amount > 10000 
- 			and cs.cs_net_profit > 1
-                         and cs.cs_net_paid > 0
+ 		where
+ 			cr.cr_return_amount > 10000.00
+ 			and cs.cs_net_profit > 1.00
+                         and cs.cs_net_paid > 0.00
                          and cs.cs_quantity > 0
                          and cs_sold_date_sk = d_date_sk
                          and d_year = 1998
@@ -105,10 +105,10 @@ select  channel, item, return_ratio, return_rank, currency_rank from
  		store_sales sts left outer join store_returns sr
  			on (sts.ss_ticket_number = sr.sr_ticket_number and sts.ss_item_sk = sr.sr_item_sk)
                 ,date_dim
- 		where 
- 			sr.sr_return_amt > 10000 
- 			and sts.ss_net_profit > 1
-                         and sts.ss_net_paid > 0 
+ 		where
+ 			sr.sr_return_amt > 10000.00
+ 			and sts.ss_net_profit > 1.00
+                         and sts.ss_net_paid > 0.00
                          and sts.ss_quantity > 0
                          and ss_sold_date_sk = d_date_sk
                          and d_year = 1998

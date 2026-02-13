@@ -19,18 +19,18 @@ select
  	,sum(oct_sales) as oct_sales
  	,sum(nov_sales) as nov_sales
  	,sum(dec_sales) as dec_sales
- 	,sum(jan_sales/w_warehouse_sq_ft) as jan_sales_per_sq_foot
- 	,sum(feb_sales/w_warehouse_sq_ft) as feb_sales_per_sq_foot
- 	,sum(mar_sales/w_warehouse_sq_ft) as mar_sales_per_sq_foot
- 	,sum(apr_sales/w_warehouse_sq_ft) as apr_sales_per_sq_foot
- 	,sum(may_sales/w_warehouse_sq_ft) as may_sales_per_sq_foot
- 	,sum(jun_sales/w_warehouse_sq_ft) as jun_sales_per_sq_foot
- 	,sum(jul_sales/w_warehouse_sq_ft) as jul_sales_per_sq_foot
- 	,sum(aug_sales/w_warehouse_sq_ft) as aug_sales_per_sq_foot
- 	,sum(sep_sales/w_warehouse_sq_ft) as sep_sales_per_sq_foot
- 	,sum(oct_sales/w_warehouse_sq_ft) as oct_sales_per_sq_foot
- 	,sum(nov_sales/w_warehouse_sq_ft) as nov_sales_per_sq_foot
- 	,sum(dec_sales/w_warehouse_sq_ft) as dec_sales_per_sq_foot
+ 	,sum(jan_sales/NULLIF(w_warehouse_sq_ft, 0)) as jan_sales_per_sq_foot
+ 	,sum(feb_sales/NULLIF(w_warehouse_sq_ft, 0)) as feb_sales_per_sq_foot
+ 	,sum(mar_sales/NULLIF(w_warehouse_sq_ft, 0)) as mar_sales_per_sq_foot
+ 	,sum(apr_sales/NULLIF(w_warehouse_sq_ft, 0)) as apr_sales_per_sq_foot
+ 	,sum(may_sales/NULLIF(w_warehouse_sq_ft, 0)) as may_sales_per_sq_foot
+ 	,sum(jun_sales/NULLIF(w_warehouse_sq_ft, 0)) as jun_sales_per_sq_foot
+ 	,sum(jul_sales/NULLIF(w_warehouse_sq_ft, 0)) as jul_sales_per_sq_foot
+ 	,sum(aug_sales/NULLIF(w_warehouse_sq_ft, 0)) as aug_sales_per_sq_foot
+ 	,sum(sep_sales/NULLIF(w_warehouse_sq_ft, 0)) as sep_sales_per_sq_foot
+ 	,sum(oct_sales/NULLIF(w_warehouse_sq_ft, 0)) as oct_sales_per_sq_foot
+ 	,sum(nov_sales/NULLIF(w_warehouse_sq_ft, 0)) as nov_sales_per_sq_foot
+ 	,sum(dec_sales/NULLIF(w_warehouse_sq_ft, 0)) as dec_sales_per_sq_foot
  	,sum(jan_net) as jan_net
  	,sum(feb_net) as feb_net
  	,sum(mar_net) as mar_net

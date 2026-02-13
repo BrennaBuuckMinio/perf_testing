@@ -16,7 +16,7 @@ select c_last_name
          household_demographics.hd_buy_potential = '5001-10000')
     and household_demographics.hd_vehicle_count > 0
     and (case when household_demographics.hd_vehicle_count > 0 
-	then household_demographics.hd_dep_count/ household_demographics.hd_vehicle_count 
+	then household_demographics.hd_dep_count/ NULLIF(household_demographics.hd_vehicle_count, 0) 
 	else null 
 	end)  > 1.2
     and date_dim.d_year in (2000,2000+1,2000+2)
