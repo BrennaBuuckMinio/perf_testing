@@ -13,7 +13,7 @@
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Test Group">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <stringProp name="LoopController.loops">99</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -144,7 +144,7 @@ log.debug(&quot;📝 Query starts with: &quot; + query.take(80).replaceAll(&quot
             </value>
           </objProp>
           <stringProp name="filename">${__P(results.file,results/full_results.csv)}</stringProp>
-          <boolProp name="ResultCollector.success_only_logging">true</boolProp>
+          <boolProp name="ResultCollector.success_only_logging">false</boolProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
