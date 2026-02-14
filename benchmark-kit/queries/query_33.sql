@@ -56,21 +56,21 @@ select  substr(r_reason_desc,1,20)
      ca_country = 'United States'
      and
      ca_state in ('SC', 'IN', 'VA')
-     and ws_net_profit between 100.00 and 200.00  
+     and ws_net_profit between 100 and 200  
     )
     or
     (
      ca_country = 'United States'
      and
      ca_state in ('WA', 'KS', 'KY')
-     and ws_net_profit between 150.00 and 300.00  
+     and ws_net_profit between 150 and 300  
     )
     or
     (
      ca_country = 'United States'
      and
      ca_state in ('SD', 'WI', 'NE')
-     and ws_net_profit between 50.00 and 250.00  
+     and ws_net_profit between 50 and 250  
     )
    )
 group by r_reason_desc

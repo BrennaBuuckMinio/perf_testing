@@ -34,15 +34,15 @@ select avg(ss_quantity)
  and((ss_addr_sk = ca_address_sk
   and ca_country = 'United States'
   and ca_state in ('MT', 'CA', 'MN')
-  and ss_net_profit between 100.00 and 200.00  
+  and ss_net_profit between 100 and 200  
      ) or
      (ss_addr_sk = ca_address_sk
   and ca_country = 'United States'
   and ca_state in ('GA', 'VA', 'NE')
-  and ss_net_profit between 150.00 and 300.00  
+  and ss_net_profit between 150 and 300  
      ) or
      (ss_addr_sk = ca_address_sk
   and ca_country = 'United States'
   and ca_state in ('NC', 'MI', 'IN')
-  and ss_net_profit between 50.00 and 250.00  
+  and ss_net_profit between 50 and 250  
      ));

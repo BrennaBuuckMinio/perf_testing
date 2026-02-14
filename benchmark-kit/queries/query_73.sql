@@ -15,7 +15,10 @@ select c_last_name
     and (household_demographics.hd_buy_potential = '>10000' or
          household_demographics.hd_buy_potential = '5001-10000')
     and household_demographics.hd_vehicle_count > 0
-    and household_demographics.hd_dep_count > 1.2 * household_demographics.hd_vehicle_count
+    and (case when household_demographics.hd_vehicle_count > 0 
+	then household_demographics.hd_dep_count/ household_demographics.hd_vehicle_count 
+	else null 
+	end)  > 1.2
     and date_dim.d_year in (2000,2000+1,2000+2)
     and store.s_county in ('Williamson County','Williamson County','Williamson County','Williamson County',
                            'Williamson County','Williamson County','Williamson County','Williamson County')

@@ -36,7 +36,7 @@ ss as
    )
  select 
 ss_customer_sk,
-round(ss_qty/NULLIF(coalesce(ws_qty,0)+coalesce(cs_qty,0), 0),2) ratio,
+round(ss_qty/(coalesce(ws_qty,0)+coalesce(cs_qty,0)),2) ratio,
 ss_qty store_qty, ss_wc store_wholesale_cost, ss_sp store_sales_price,
 coalesce(ws_qty,0)+coalesce(cs_qty,0) other_chan_qty,
 coalesce(ws_wc,0)+coalesce(cs_wc,0) other_chan_wholesale_cost,

@@ -62,7 +62,7 @@
 | Remaining errors | query_39, query_73, query_76, query_79 |
 | Status | **Discarded** — 4 remaining errors fixed with cross-multiplication |
 
-### Run 1c (warm-up — discard, post-fix #2)
+### Run 1c (warm-up — discard, unmodified queries)
 
 | Item | Value |
 |------|-------|
@@ -83,6 +83,8 @@
 | Pod start (UTC) | |
 | Pod end (UTC) | |
 | Total elapsed | |
+| Queries succeeded | |
+| Queries failed | |
 | Grafana screenshot | |
 | Grafana link | |
 
@@ -94,6 +96,8 @@
 | Pod start (UTC) | |
 | Pod end (UTC) | |
 | Total elapsed | |
+| Queries succeeded | |
+| Queries failed | |
 | Grafana screenshot | |
 | Grafana link | |
 
@@ -102,7 +106,8 @@
 | Metric | Run 1d | Run 1e | Average |
 |--------|--------|--------|---------|
 | Total elapsed | | | |
-| Avg per-query | | | |
+| Queries succeeded | | | |
+| Avg per-query (succeeded) | | | |
 | Min query | | | |
 | Max query | | | |
 
@@ -291,47 +296,24 @@
 
 ## Query Modifications
 
-The original TPC-DS SQL templates required dialect-specific adjustments for Dremio v26.0.9. All changes are minimal and do not affect query semantics or performance.
+**Decision: Use unmodified TPC-DS queries.** All 99 queries run as-is from the standard TPC-DS templates. Queries that fail due to Dremio/Gandiva limitations are recorded as failures and excluded from timing analysis, matching the approach used in published Dremio benchmarks (e.g., `sergeleo/dremio-tpc-ds` which reported 58/99 queries for sf1000).
 
-### Gandiva Cast Fixes (integer literals to decimal)
+### Known Dremio v26.0.9 Failure Modes
 
-Dremio's Gandiva (Arrow-native) execution engine fails when comparing decimal columns to integer literals — it tries to cast the decimal string to int and fails on values like `27.02`. Fix: use decimal literals (`.00` suffix).
+The following failure modes were identified during Runs 1a and 1b. Rather than modifying queries, we let them fail naturally:
 
-| Query | Column(s) | Change |
-|-------|-----------|--------|
-| `query_6.sql` | `i_current_price` | `> 50` → `> 50.00` (3 occurrences) |
-| `query_20.sql` | `i_current_price` | `between 22 and 32` / `between 23 and 37` → decimal |
-| `query_31.sql` | `i_current_price` | `between 26 and 56` → decimal |
-| `query_33.sql` | `ws_net_profit` | 3 `between` clauses → decimal |
-| `query_36.sql` | `ss_list_price`, `ss_coupon_amt`, `ss_wholesale_cost` | 18 `between` clauses across 6 buckets → decimal |
-| `query_48.sql` | `wr_return_amt`, `ws/cs/ss_net_profit`, `ws/cs/ss_net_paid` | `> 10000`, `> 1`, `> 0` → decimal (3 sections) |
-| `query_57.sql` | `i_current_price` | `between 30 and 60` → decimal |
-| `query_67.sql` | `cs_sales_price` | `> 500` → `> 500.00` |
-| `query_74.sql` | `ss_net_profit` | 3 `between` clauses → decimal |
-| `query_76.sql` | `year_total` (`max(ss/ws_net_paid)`) | `> 0` → `> 0.00` (4 occurrences) |
-| `query_91.sql` | `ss_net_profit` | 3 `between` clauses → decimal |
+| Failure Mode | Affected Queries | Root Cause |
+|-------------|-----------------|------------|
+| Gandiva cast error | ~11 queries | Gandiva cannot cast decimal columns compared to integer literals |
+| Gandiva divide-by-zero (PROJECT) | query_3, query_10, query_14, query_19, query_21, query_39, query_96 | Division by zero in SELECT expressions; Gandiva does not short-circuit |
+| Gandiva divide-by-zero (FILTER) | query_73, query_76, query_79 | Division by zero in WHERE clauses; Gandiva FILTER evaluator evaluates all rows regardless of CASE/NULLIF guards |
 
-### Divide-by-Zero Fixes
+### Previous Fix Attempts (reverted)
 
-**Round 1 — NULLIF wrapping (Run 1a → 1b):** Added `NULLIF(divisor, 0)` to prevent Gandiva divide-by-zero in PROJECT contexts.
-
-| Query | Change | Reason |
-|-------|--------|--------|
-| `query_3.sql` | Wrapped `CAST(prev_yr.sales_cnt ...)` with `NULLIF(..., 0)` | Division in WHERE clause; prev year can have zero sales |
-| `query_10.sql` | Wrapped `coalesce(ws_qty,0)+coalesce(cs_qty,0)` with `NULLIF(..., 0)` | Denominator zero when both web and catalog quantities null/zero |
-| `query_14.sql` | Added `NULLIF(inv_before, 0)` inside CASE | Belt-and-suspenders guard alongside CASE check |
-| `query_19.sql` | Wrapped `(ss_item_rev+cs_item_rev+ws_item_rev)/3` with `NULLIF(..., 0)` (3 cols) | Average can be zero if all revenue channels zero |
-| `query_21.sql` | Wrapped `sum(ss_ext_sales_price)` with `NULLIF(..., 0)` (2 places) | `gross_margin` and `rank_within_parent` divisions |
-| `query_96.sql` | Wrapped `(sr_item_qty+cr_item_qty+wr_item_qty)` with `NULLIF(..., 0)` (3 cols) | Sum of return quantities can be zero |
-
-**Round 2 — Algebraic elimination of division (Run 1b → 1c):** Gandiva's FILTER evaluator does not short-circuit CASE WHEN or NULLIF — it evaluates the division for all rows in a batch regardless of guards. Queries 39, 73, 76, 79 still failed after Round 1. Fixed by eliminating division entirely using algebraic equivalences.
-
-| Query | Context | Change | Semantic impact |
-|-------|---------|--------|-----------------|
-| `query_39.sql` | PROJECT | `sum(x/NULLIF(y,0))` → `sum(x)/NULLIF(y,0)` (12 months). Moved division outside SUM; `w_warehouse_sq_ft` is a GROUP BY column so result is identical. | None — mathematically equivalent |
-| `query_73.sql` | FILTER | `dep_count/vehicle_count > 1.2` → `dep_count > 1.2 * vehicle_count`. Cross-multiplication; `vehicle_count > 0` is already guaranteed by prior WHERE clause. | Minor — cross-multiplication uses real arithmetic instead of integer division, so it may return additional rows where the integer quotient truncated below the threshold. |
-| `query_76.sql` | FILTER | `CASE WHEN a>0 THEN b/a ELSE NULL END > CASE WHEN c>0 THEN d/c ELSE NULL END` → `b*c > d*a`. Cross-multiplication; both divisors guaranteed > 0 by prior conditions. Operands are `max(net_paid)` (decimal). | None — algebraically equivalent for positive divisors with decimal operands |
-| `query_79.sql` | FILTER | `dep_count/vehicle_count > 1` → `dep_count > vehicle_count`. Same cross-multiplication as query_73. | Minor — same integer-division vs real-arithmetic difference as query_73 |
+Runs 1a–1b attempted to fix these failures with query modifications (decimal literal suffixes, NULLIF wrapping, cross-multiplication). These were reverted because:
+1. Modifying queries departs from the standard TPC-DS benchmark
+2. The reference benchmark (Dremio 4.2.1) also did not run all 99 queries — comparing only successful queries is standard practice
+3. Some fixes (cross-multiplication) had minor semantic differences from the original queries
 
 ### Iceberg Schema Fix
 

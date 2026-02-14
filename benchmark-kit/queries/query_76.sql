@@ -50,8 +50,9 @@ with year_total as (
          and t_s_secyear."year" = 2001+1
          and t_w_firstyear."year" = 2001
          and t_w_secyear."year" = 2001+1
-         and t_s_firstyear.year_total > 0.00
-         and t_w_firstyear.year_total > 0.00
-         and t_w_secyear.year_total * t_s_firstyear.year_total > t_s_secyear.year_total * t_w_firstyear.year_total
+         and t_s_firstyear.year_total > 0
+         and t_w_firstyear.year_total > 0
+         and case when t_w_firstyear.year_total > 0 then t_w_secyear.year_total / t_w_firstyear.year_total else null end
+           > case when t_s_firstyear.year_total > 0 then t_s_secyear.year_total / t_s_firstyear.year_total else null end
  order by 2,1,3
 limit 100;
