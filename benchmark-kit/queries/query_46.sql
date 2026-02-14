@@ -1,42 +1,32 @@
-WITH web_v1 as (
-select
-  ws_item_sk item_sk, d_date,
-  sum(sum(ws_sales_price))
-      over (partition by ws_item_sk order by d_date rows between unbounded preceding and current row) cume_sales
-from web_sales
-    ,date_dim
-where ws_sold_date_sk=d_date_sk
-  and d_month_seq between 1178 and 1178+11
-  and ws_item_sk is not NULL
-group by ws_item_sk, d_date),
-store_v1 as (
-select
-  ss_item_sk item_sk, d_date,
-  sum(sum(ss_sales_price))
-      over (partition by ss_item_sk order by d_date rows between unbounded preceding and current row) cume_sales
-from store_sales
-    ,date_dim
-where ss_sold_date_sk=d_date_sk
-  and d_month_seq between 1178 and 1178+11
-  and ss_item_sk is not NULL
-group by ss_item_sk, d_date)
- select  *
-from (select item_sk
-     ,d_date
-     ,web_sales
-     ,store_sales
-     ,max(web_sales)
-         over (partition by item_sk order by d_date rows between unbounded preceding and current row) web_cumulative
-     ,max(store_sales)
-         over (partition by item_sk order by d_date rows between unbounded preceding and current row) store_cumulative
-     from (select case when web.item_sk is not null then web.item_sk else store.item_sk end item_sk
-                 ,case when web.d_date is not null then web.d_date else store.d_date end d_date
-                 ,web.cume_sales web_sales
-                 ,store.cume_sales store_sales
-           from web_v1 web full outer join store_v1 store on (web.item_sk = store.item_sk
-                                                          and web.d_date = store.d_date)
-          )x )y
-where web_cumulative > store_cumulative
-order by item_sk
-        ,d_date
-limit 100;
+select  c_last_name
+       ,c_first_name
+       ,ca_city
+       ,bought_city
+       ,ss_ticket_number
+       ,amt,profit 
+ from
+   (select ss_ticket_number
+          ,ss_customer_sk
+          ,ca_city bought_city
+          ,sum(ss_coupon_amt) amt
+          ,sum(ss_net_profit) profit
+    from store_sales,date_dim,store,household_demographics,customer_address 
+    where store_sales.ss_sold_date_sk = date_dim.d_date_sk
+    and store_sales.ss_store_sk = store.s_store_sk  
+    and store_sales.ss_hdemo_sk = household_demographics.hd_demo_sk
+    and store_sales.ss_addr_sk = customer_address.ca_address_sk
+    and (household_demographics.hd_dep_count = 2 or
+         household_demographics.hd_vehicle_count= 1)
+    and date_dim.d_dow in (6,0)
+    and date_dim.d_year in (1998,1998+1,1998+2) 
+    and store.s_city in ('Cedar Grove','Wildwood','Union','Salem','Highland Park') 
+    group by ss_ticket_number,ss_customer_sk,ss_addr_sk,ca_city) dn,customer,customer_address current_addr
+    where ss_customer_sk = c_customer_sk
+      and customer.c_current_addr_sk = current_addr.ca_address_sk
+      and current_addr.ca_city <> bought_city
+  order by c_last_name
+          ,c_first_name
+          ,ca_city
+          ,bought_city
+          ,ss_ticket_number
+  limit 100;

@@ -1,44 +1,25 @@
-select   
-     i_item_id
-    ,i_item_desc
-    ,s_store_id
-    ,s_store_name
-    ,min(ss_quantity)        as store_sales_quantity
-    ,min(sr_return_quantity) as store_returns_quantity
-    ,min(cs_quantity)        as catalog_sales_quantity
- from
-    store_sales
-   ,store_returns
-   ,catalog_sales
-   ,date_dim             d1
-   ,date_dim             d2
-   ,date_dim             d3
-   ,store
-   ,item
- where
-     d1.d_moy               = 4 
- and d1.d_year              = 1998
- and d1.d_date_sk           = ss_sold_date_sk
- and i_item_sk              = ss_item_sk
- and s_store_sk             = ss_store_sk
- and ss_customer_sk         = sr_customer_sk
- and ss_item_sk             = sr_item_sk
- and ss_ticket_number       = sr_ticket_number
- and sr_returned_date_sk    = d2.d_date_sk
- and d2.d_moy               between 4 and  4 + 3 
- and d2.d_year              = 1998
- and sr_customer_sk         = cs_bill_customer_sk
- and sr_item_sk             = cs_item_sk
- and cs_sold_date_sk        = d3.d_date_sk     
- and d3.d_year              in (1998,1998+1,1998+2)
- group by
-    i_item_id
-   ,i_item_desc
-   ,s_store_id
-   ,s_store_name
- order by
-    i_item_id 
-   ,i_item_desc
-   ,s_store_id
-   ,s_store_name
- limit 100;
+select  * from 
+(select i_manufact_id,
+sum(ss_sales_price) sum_sales,
+avg(sum(ss_sales_price)) over (partition by i_manufact_id) avg_quarterly_sales
+from item, store_sales, date_dim, store
+where ss_item_sk = i_item_sk and
+ss_sold_date_sk = d_date_sk and
+ss_store_sk = s_store_sk and
+d_month_seq in (1212,1212+1,1212+2,1212+3,1212+4,1212+5,1212+6,1212+7,1212+8,1212+9,1212+10,1212+11) and
+((i_category in ('Books','Children','Electronics') and
+i_class in ('personal','portable','reference','self-help') and
+i_brand in ('scholaramalgamalg #14','scholaramalgamalg #7',
+		'exportiunivamalg #9','scholaramalgamalg #9'))
+or(i_category in ('Women','Music','Men') and
+i_class in ('accessories','classical','fragrances','pants') and
+i_brand in ('amalgimporto #1','edu packscholar #1','exportiimporto #1',
+		'importoamalg #1')))
+group by i_manufact_id, d_qoy ) tmp1
+where case when avg_quarterly_sales > 0 
+	then abs (sum_sales - avg_quarterly_sales)/ avg_quarterly_sales 
+	else null end > 0.1
+order by avg_quarterly_sales,
+	 sum_sales,
+	 i_manufact_id
+limit 100;

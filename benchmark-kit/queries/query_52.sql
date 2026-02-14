@@ -1,15 +1,19 @@
-select  ss_customer_sk
-            ,sum(act_sales) sumsales
-      from (select ss_item_sk
-                  ,ss_ticket_number
-                  ,ss_customer_sk
-                  ,case when sr_return_quantity is not null then (ss_quantity-sr_return_quantity)*ss_sales_price
-                                                            else (ss_quantity*ss_sales_price) end act_sales
-            from store_sales left outer join store_returns on (sr_item_sk = ss_item_sk
-                                                               and sr_ticket_number = ss_ticket_number)
-                ,reason
-            where sr_reason_sk = r_reason_sk
-              and r_reason_desc = 'reason 55') t
-      group by ss_customer_sk
-      order by sumsales, ss_customer_sk
-limit 100;
+select  dt.d_year
+ 	,item.i_brand_id brand_id
+ 	,item.i_brand brand
+ 	,sum(ss_ext_sales_price) ext_price
+ from date_dim dt
+     ,store_sales
+     ,item
+ where dt.d_date_sk = store_sales.ss_sold_date_sk
+    and store_sales.ss_item_sk = item.i_item_sk
+    and item.i_manager_id = 1
+    and dt.d_moy=12
+    and dt.d_year=1998
+ group by dt.d_year
+ 	,item.i_brand
+ 	,item.i_brand_id
+ order by dt.d_year
+ 	,ext_price desc
+ 	,brand_id
+limit 100 ;

@@ -1,30 +1,25 @@
-select i_item_id
-      ,i_item_desc 
-      ,i_category 
-      ,i_class 
-      ,i_current_price
-      ,sum(ss_ext_sales_price) as itemrevenue 
-      ,sum(ss_ext_sales_price)*100/sum(sum(ss_ext_sales_price)) over
-          (partition by i_class) as revenueratio
-from	
-	store_sales
-    	,item 
-    	,date_dim
-where 
-	ss_item_sk = i_item_sk 
-  	and i_category in ('Shoes', 'Music', 'Men')
-  	and ss_sold_date_sk = d_date_sk
-	and d_date between cast('2000-01-05' as date) 
-				and DATE_ADD(cast('2000-01-05' as date), 30)
-group by 
-	i_item_id
-        ,i_item_desc 
-        ,i_category
-        ,i_class
-        ,i_current_price
-order by 
-	i_category
-        ,i_class
-        ,i_item_id
-        ,i_item_desc
-        ,revenueratio;
+select  sum(cs_ext_discount_amt)  as "excess discount amount" 
+from 
+   catalog_sales 
+   ,item 
+   ,date_dim
+where
+i_manufact_id = 269
+and i_item_sk = cs_item_sk 
+and d_date between '1998-03-18' and 
+        DATE_ADD(cast('1998-03-18' as date), 90)
+and d_date_sk = cs_sold_date_sk 
+and cs_ext_discount_amt  
+     > ( 
+         select 
+            1.3 * avg(cs_ext_discount_amt) 
+         from 
+            catalog_sales 
+           ,date_dim
+         where 
+              cs_item_sk = i_item_sk 
+          and d_date between '1998-03-18' and
+                             DATE_ADD(cast('1998-03-18' as date), 90)
+          and d_date_sk = cs_sold_date_sk 
+      ) 
+limit 100;

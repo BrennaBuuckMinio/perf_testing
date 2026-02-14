@@ -1,25 +1,23 @@
-select  
-   w_state
-  ,i_item_id
-  ,sum(case when (cast(d_date as date) < cast ('1999-03-30' as date)) 
- 		then cs_sales_price - coalesce(cr_refunded_cash,0) else 0 end) as sales_before
-  ,sum(case when (cast(d_date as date) >= cast ('1999-03-30' as date)) 
- 		then cs_sales_price - coalesce(cr_refunded_cash,0) else 0 end) as sales_after
+select   
+    sum(ws_net_paid) as total_sum
+   ,i_category
+   ,i_class
+   ,grouping(i_category)+grouping(i_class) as lochierarchy
+   ,rank() over (
+ 	partition by grouping(i_category)+grouping(i_class),
+ 	case when grouping(i_class) = 0 then i_category end 
+ 	order by sum(ws_net_paid) desc) as rank_within_parent
  from
-   catalog_sales left outer join catalog_returns on
-       (cs_order_number = cr_order_number 
-        and cs_item_sk = cr_item_sk)
-  ,warehouse 
-  ,item
-  ,date_dim
+    web_sales
+   ,date_dim       d1
+   ,item
  where
-     i_current_price between 0.99 and 1.49
- and i_item_sk          = cs_item_sk
- and cs_warehouse_sk    = w_warehouse_sk 
- and cs_sold_date_sk    = d_date_sk
- and d_date between DATE_ADD(cast('1999-03-30' as date), -30)
-                and DATE_ADD(cast('1999-03-30' as date), 30) 
- group by
-    w_state,i_item_id
- order by w_state,i_item_id
-limit 100;
+    d1.d_month_seq between 1212 and 1212+11
+ and d1.d_date_sk = ws_sold_date_sk
+ and i_item_sk  = ws_item_sk
+ group by rollup(i_category,i_class)
+ order by
+   lochierarchy desc,
+   case when lochierarchy = 0 then i_category end,
+   rank_within_parent
+ limit 100;
