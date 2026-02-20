@@ -238,7 +238,9 @@ The performance advantage comes from multiple factors:
 | **Dremio version (4.2.1 → v26)** | Major | 81/99 vs 58/99 query success rate; improved optimizer, execution engine |
 | **Result cache** | Major | Our Phase 2 serves pre-computed results in ~200ms; sergeleo's C3-warm still re-executes queries (~22s avg) |
 | **MinIO AIStor throughput** | Enabling | 100 Gbps internal network, <1% memory utilization — storage never bottlenecked |
-| **Hardware (compute)** | Moderate | Our executors have 2x vCPUs and 2x RAM per node |
+| **Hardware (compute)** | Moderate | Our executors have ~4x physical cores and 2x RAM per node |
+
+**Note on the compute advantage:** Our Dremio executors are substantially more powerful than the sergeleo setup (64 cores / 128 threads vs 32 vCPU per node). This means our compute layer could demand *more* data from storage than theirs ever could — yet Grafana monitoring shows MinIO AIStor still operated at just 15% average S3 network utilization and <1% memory. Even when driven by a significantly more powerful compute tier, MinIO AIStor was never the bottleneck.
 
 ### vs Dremio "20x Faster" Announcement (Sept 2025)
 
