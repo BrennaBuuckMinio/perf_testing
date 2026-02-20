@@ -1,0 +1,6 @@
+Grafana Dashboard: https://grafana-k5.apps.k2.min.dev/d/TgmJnqnnk/minio-dashboard?orgId=1&from=2026-02-16T16:06:00.000Z&to=2026-02-16T19:06:00.000Z&timezone=browser&var-scrape_jobs=$__all
+Time Window (UTC): 2026-02-16 16:06:00 to 2026-02-16 19:06:00
+Time Window (PST): 2026-02-16 08:06:00 to 2026-02-16 11:06:00
+Dataset: 1Tb
+Mode: noref (99 queries, no reflections, no cache)
+Screenshots: _top.png, _bottom.png

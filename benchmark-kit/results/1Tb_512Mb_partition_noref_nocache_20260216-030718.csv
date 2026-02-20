@@ -1,0 +1,568 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1771211240342,19879,run-noref-20260216-030720 - query_1.sql,200,OK,Test Group 1-1,text,true,,1714,0,1,1,null,19683,0,932
+1771211260224,34914,run-noref-20260216-030720 - query_10.sql,200,OK,Test Group 1-1,text,true,,4894,0,1,1,null,34583,0,0
+1771211295139,80639,run-noref-20260216-030720 - query_11.sql,200,OK,Test Group 1-1,text,true,,74,0,1,1,null,80341,0,0
+1771211375783,6422,run-noref-20260216-030720 - query_12.sql,200,OK,Test Group 1-1,text,true,,14876,0,1,1,null,6312,0,0
+1771211382207,1213,run-noref-20260216-030720 - query_13.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 3248.70 to int64_t
+
+SqlOperatorImpl FILTER
+Location 1:26:17
+ErrorOrigin: EXECUTOR
+[Error Id: 21955684-2352-4617-a1af-0d8dd758b4f9 on dremio-executor-tpcds-000-2.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 3248.70 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1508,0,1,1,null,0,0,0
+1771211383421,403645,run-noref-20260216-030720 - query_14.sql,200,OK,Test Group 1-1,text,true,,85,0,1,1,null,403135,0,0
+1771211787068,3940,run-noref-20260216-030720 - query_15.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 17.62 to int32_t
+
+SqlOperatorImpl FILTER
+Location 3:46:5
+ErrorOrigin: EXECUTOR
+[Error Id: aaec074f-297f-4ba7-9486-7cdca12c6f92 on dremio-executor-tpcds-000-2.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 17.62 to int32_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1503,0,1,1,null,0,0,0
+1771211791011,689085,run-noref-20260216-030720 - query_16.sql,200,OK,Test Group 1-1,text,true,,137,0,1,1,null,688803,0,0
+1771212480098,44453,run-noref-20260216-030720 - query_17.sql,200,OK,Test Group 1-1,text,true,,16686,0,1,1,null,44240,0,0
+1771212524551,106849,run-noref-20260216-030720 - query_18.sql,200,OK,Test Group 1-1,text,true,,8986,0,1,1,null,106656,0,0
+1771212631402,20177,run-noref-20260216-030720 - query_19.sql,200,OK,Test Group 1-1,text,true,,8278,0,1,1,null,20050,0,0
+1771212651582,313505,run-noref-20260216-030720 - query_2.sql,200,OK,Test Group 1-1,text,true,,110003,0,1,1,null,313345,0,0
+1771212965088,14161,run-noref-20260216-030720 - query_20.sql,200,OK,Test Group 1-1,text,true,,14876,0,1,1,null,14054,0,0
+1771212979251,3757,run-noref-20260216-030720 - query_21.sql,200,OK,Test Group 1-1,text,true,,48,0,1,1,null,3644,0,0
+1771212983009,12938,run-noref-20260216-030720 - query_22.sql,200,OK,Test Group 1-1,text,true,,5259,0,1,1,null,12642,0,0
+1771212995948,221877,run-noref-20260216-030720 - query_23.sql,200,OK,Test Group 1-1,text,true,,12,0,1,1,null,221578,0,0
+1771213217828,299388,run-noref-20260216-030720 - query_24.sql,200,OK,Test Group 1-1,text,true,,4992,0,1,1,null,299168,0,0
+1771213517217,49634,run-noref-20260216-030720 - query_25.sql,200,OK,Test Group 1-1,text,true,,16567,0,1,1,null,49445,0,0
+1771213566851,61236,run-noref-20260216-030720 - query_26.sql,200,OK,Test Group 1-1,text,true,,4053,0,1,1,null,61107,0,0
+1771213628089,93797,run-noref-20260216-030720 - query_27.sql,200,OK,Test Group 1-1,text,true,,3974,0,1,1,null,93663,0,0
+1771213721887,1101,run-noref-20260216-030720 - query_28.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 108.36 to int64_t
+
+SqlOperatorImpl FILTER
+Location 9:77:5
+ErrorOrigin: EXECUTOR
+[Error Id: c855cbf7-cdf7-48a4-a666-d0f0ea712878 on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 108.36 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1505,0,1,1,null,0,0,0
+1771213722990,92538,run-noref-20260216-030720 - query_29.sql,200,OK,Test Group 1-1,text,true,,15743,0,1,1,null,92338,0,0
+1771213815531,44553,run-noref-20260216-030720 - query_3.sql,200,OK,Test Group 1-1,text,true,,5459,0,1,1,null,44456,0,0
+1771213860086,8354,run-noref-20260216-030720 - query_30.sql,200,OK,Test Group 1-1,text,true,,10609,0,1,1,null,8128,0,0
+1771213868442,54030,run-noref-20260216-030720 - query_31.sql,200,OK,Test Group 1-1,text,true,,2682,0,1,1,null,53695,0,0
+1771213922474,36526,run-noref-20260216-030720 - query_32.sql,200,OK,Test Group 1-1,text,true,,64,0,1,1,null,36377,0,0
+1771213959000,12154,run-noref-20260216-030720 - query_33.sql,200,OK,Test Group 1-1,text,true,,4616,0,1,1,null,11878,0,0
+1771213971157,294,run-noref-20260216-030720 - query_34.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: divide by zero error
+
+SqlOperatorImpl FILTER
+Location 9:0:3
+ErrorOrigin: EXECUTOR
+[Error Id: d2a9456b-54f9-474d-9d92-f35ddc306a53 on dremio-executor-tpcds-000-1.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1458,0,1,1,null,0,0,0
+1771213971453,85323,run-noref-20260216-030720 - query_35.sql,200,OK,Test Group 1-1,text,true,,5968,0,1,1,null,85010,0,0
+1771214056777,57894,run-noref-20260216-030720 - query_36.sql,null 0,"java.sql.SQLException: FUNCTION ERROR: divide by zero error
+
+SqlOperatorImpl PROJECT
+Location 3:70:2
+ErrorOrigin: EXECUTOR
+[Error Id: 86043570-c953-4297-8001-466d85e5ebc9 on dremio-executor-tpcds-000-2.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateProjector():-2
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():417
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():251
+    com.dremio.sabot.op.llvm.NativeProjector.execute():99
+    com.dremio.sabot.op.llvm.NativeProjectorBuilder$1.evaluate():122
+    com.dremio.exec.expr.SplitStageExecutor.evaluateProjector():413
+    com.dremio.exec.expr.ExpressionSplitter.projectRecords():808
+    com.dremio.sabot.op.project.ProjectOperator.outputData():303
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.outputData():257
+    com.dremio.sabot.driver.StraightPipe.pump():55
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1453,0,1,1,null,0,0,0
+1771214114673,798,run-noref-20260216-030720 - query_37.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 27.02 to int64_t
+
+SqlOperatorImpl FILTER
+Location 7:22:3
+ErrorOrigin: EXECUTOR
+[Error Id: 95aabdaf-70e7-4abf-8548-3f211fb8ed36 on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 27.02 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1503,0,1,1,null,0,0,0
+1771214115473,63781,run-noref-20260216-030720 - query_38.sql,200,OK,Test Group 1-1,text,true,,15,0,1,1,null,63556,0,0
+1771214179254,3473,run-noref-20260216-030720 - query_39.sql,200,OK,Test Group 1-1,text,true,,85,0,1,1,null,3327,0,0
+1771214182729,113687,run-noref-20260216-030720 - query_4.sql,200,OK,Test Group 1-1,text,true,,74,0,1,1,null,113256,0,0
+1771214296419,56966,run-noref-20260216-030720 - query_40.sql,200,OK,Test Group 1-1,text,true,,4046,0,1,1,null,56819,0,0
+1771214353386,7505,run-noref-20260216-030720 - query_41.sql,200,OK,Test Group 1-1,text,true,,2451,0,1,1,null,7416,0,0
+1771214360892,4070,run-noref-20260216-030720 - query_42.sql,200,OK,Test Group 1-1,text,true,,665,0,1,1,null,3966,0,0
+1771214364964,67024,run-noref-20260216-030720 - query_43.sql,200,OK,Test Group 1-1,text,true,,31343,0,1,1,null,66922,0,0
+1771214431989,433462,run-noref-20260216-030720 - query_44.sql,200,OK,Test Group 1-1,text,true,,576,0,1,1,null,433307,0,0
+1771214865454,11326,run-noref-20260216-030720 - query_45.sql,200,OK,Test Group 1-1,text,true,,2899,0,1,1,null,11178,0,0
+1771214876780,83463,run-noref-20260216-030720 - query_46.sql,200,OK,Test Group 1-1,text,true,,5554,0,1,1,null,83308,0,0
+1771214960246,132788,run-noref-20260216-030720 - query_47.sql,200,OK,Test Group 1-1,text,true,,17904,0,1,1,null,132583,0,0
+1771215093035,1808,run-noref-20260216-030720 - query_48.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string -2327.30 to int64_t
+
+SqlOperatorImpl FILTER
+Location 1:1:15
+ErrorOrigin: EXECUTOR
+[Error Id: 6c77c644-aec3-4750-8ca3-77886ab49836 on dremio-executor-tpcds-000-1.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string -2327.30 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1509,0,1,1,null,0,0,0
+1771215094845,1850,run-noref-20260216-030720 - query_49.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string -3480.82 to int32_t
+
+SqlOperatorImpl FILTER
+Location 34:2:7
+ErrorOrigin: EXECUTOR
+[Error Id: 625009d9-60f4-4b7a-a176-ce3d081f0604 on dremio-executor-tpcds-000-2.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string -3480.82 to int32_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1509,0,1,1,null,0,0,0
+1771215096696,152746,run-noref-20260216-030720 - query_5.sql,200,OK,Test Group 1-1,text,true,,10742,0,1,1,null,152427,0,1
+1771215249445,171229,run-noref-20260216-030720 - query_50.sql,200,OK,Test Group 1-1,text,true,,8434,0,1,1,null,171081,0,0
+1771215420675,86017,run-noref-20260216-030720 - query_51.sql,200,OK,Test Group 1-1,text,true,,17865,0,1,1,null,85860,0,0
+1771215506694,5834,run-noref-20260216-030720 - query_52.sql,200,OK,Test Group 1-1,text,true,,7119,0,1,1,null,5705,0,0
+1771215512530,122853,run-noref-20260216-030720 - query_53.sql,200,OK,Test Group 1-1,text,true,,6604,0,1,1,null,122722,0,0
+1771215635387,184480,run-noref-20260216-030720 - query_54.sql,200,OK,Test Group 1-1,text,true,,43,0,1,1,null,184249,0,0
+1771215819869,15806,run-noref-20260216-030720 - query_55.sql,200,OK,Test Group 1-1,text,true,,6651,0,1,1,null,15704,0,0
+1771215835680,11296,run-noref-20260216-030720 - query_56.sql,200,OK,Test Group 1-1,text,true,,2322,0,1,1,null,11036,0,0
+1771215846980,83041,run-noref-20260216-030720 - query_57.sql,200,OK,Test Group 1-1,text,true,,16697,0,1,1,null,82855,0,0
+1771215930024,12782,run-noref-20260216-030720 - query_58.sql,null 0,"java.sql.SQLException: FUNCTION ERROR: divide by zero error
+
+SqlOperatorImpl PROJECT
+Location 2:77:1
+ErrorOrigin: EXECUTOR
+[Error Id: 0caa329c-f7a2-4d6d-984c-7649ccf0bbdc on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateProjector():-2
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():417
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():251
+    com.dremio.sabot.op.llvm.NativeProjector.execute():99
+    com.dremio.sabot.op.llvm.NativeProjectorBuilder$1.evaluate():122
+    com.dremio.exec.expr.SplitStageExecutor.evaluateProjector():413
+    com.dremio.exec.expr.ExpressionSplitter.projectRecords():808
+    com.dremio.sabot.op.project.ProjectOperator.outputData():303
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.outputData():257
+    com.dremio.sabot.driver.StraightPipe.pump():55
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1453,0,1,1,null,0,0,0
+1771215942807,169129,run-noref-20260216-030720 - query_59.sql,200,OK,Test Group 1-1,text,true,,9376,0,1,1,null,168988,0,0
+1771216111938,14504,run-noref-20260216-030720 - query_6.sql,200,OK,Test Group 1-1,text,true,,528,0,1,1,null,14021,0,0
+1771216126443,14966,run-noref-20260216-030720 - query_60.sql,200,OK,Test Group 1-1,text,true,,3162,0,1,1,null,14681,0,0
+1771216141410,23466,run-noref-20260216-030720 - query_61.sql,200,OK,Test Group 1-1,text,true,,125,0,1,1,null,23275,0,0
+1771216164877,179110,run-noref-20260216-030720 - query_62.sql,200,OK,Test Group 1-1,text,true,,5160,0,1,1,null,178974,0,0
+1771216343989,109538,run-noref-20260216-030720 - query_63.sql,200,OK,Test Group 1-1,text,true,,6505,0,1,1,null,109405,0,0
+1771216453528,1684,run-noref-20260216-030720 - query_64.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 5.20 to int64_t
+
+SqlOperatorImpl FILTER
+Location 68:10:3
+ErrorOrigin: EXECUTOR
+[Error Id: aacc1592-e597-4cfd-b0f1-7e6d4dd6628c on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 5.20 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1502,0,1,1,null,0,0,0
+1771216455213,84715,run-noref-20260216-030720 - query_65.sql,200,OK,Test Group 1-1,text,true,,4211,0,1,1,null,84544,0,0
+1771216539929,20223,run-noref-20260216-030720 - query_66.sql,null 0,"java.sql.SQLException: FUNCTION ERROR: divide by zero error
+
+SqlOperatorImpl PROJECT
+Location 5:20:1
+ErrorOrigin: EXECUTOR
+[Error Id: a94c9914-9ac2-4798-b5d8-c08924e4d1bf on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateProjector():-2
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():417
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():251
+    com.dremio.sabot.op.llvm.NativeProjector.execute():99
+    com.dremio.sabot.op.llvm.NativeProjectorBuilder$1.evaluate():122
+    com.dremio.exec.expr.SplitStageExecutor.evaluateProjector():413
+    com.dremio.exec.expr.ExpressionSplitter.projectRecords():808
+    com.dremio.sabot.op.project.ProjectOperator.outputData():303
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.outputData():257
+    com.dremio.sabot.driver.StraightPipe.pump():55
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1453,0,1,1,null,0,0,0
+1771216560155,159613,run-noref-20260216-030720 - query_67.sql,200,OK,Test Group 1-1,text,true,,8384,0,1,1,null,159283,0,0
+1771216719769,26469,run-noref-20260216-030720 - query_68.sql,200,OK,Test Group 1-1,text,true,,7918,0,1,1,null,26334,0,0
+1771216746238,21752,run-noref-20260216-030720 - query_69.sql,200,OK,Test Group 1-1,text,true,,3905,0,1,1,null,21439,0,0
+1771216767992,87070,run-noref-20260216-030720 - query_7.sql,200,OK,Test Group 1-1,text,true,,4542,0,1,1,null,86953,0,0
+1771216855063,152338,run-noref-20260216-030720 - query_70.sql,200,OK,Test Group 1-1,text,true,,3133,0,1,1,null,152177,0,0
+1771217007403,26312,run-noref-20260216-030720 - query_71.sql,200,OK,Test Group 1-1,text,true,,10849545,0,1,1,null,25950,0,0
+1771217033716,51895,run-noref-20260216-030720 - query_72.sql,200,OK,Test Group 1-1,text,true,,3727,0,1,1,null,51518,0,0
+1771217085612,296,run-noref-20260216-030720 - query_73.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: divide by zero error
+
+SqlOperatorImpl FILTER
+Location 9:0:3
+ErrorOrigin: EXECUTOR
+[Error Id: f131e256-6f33-4bb6-a6aa-79e0c68774cd on dremio-executor-tpcds-000-1.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1458,0,1,1,null,0,0,0
+1771217085909,43149,run-noref-20260216-030720 - query_74.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 561.68 to int32_t
+
+SqlOperatorImpl FILTER
+Location 27:80:3
+ErrorOrigin: EXECUTOR
+[Error Id: 48efdfdc-a89f-4c7e-80c6-f5f7579bdc11 on dremio-executor-tpcds-000-1.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 561.68 to int32_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1506,0,1,1,null,0,0,0
+1771217129060,164392,run-noref-20260216-030720 - query_75.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: divide by zero error
+
+SqlOperatorImpl FILTER
+Location 2:0:3
+ErrorOrigin: EXECUTOR
+[Error Id: c77afc1d-9e73-4a67-89a3-bff5f4c22b00 on dremio-executor-tpcds-000-1.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1458,0,1,1,null,0,0,0
+1771217293454,439366,run-noref-20260216-030720 - query_76.sql,200,OK,Test Group 1-1,text,true,,8166,0,1,1,null,439188,0,0
+1771217732820,33413,run-noref-20260216-030720 - query_77.sql,200,OK,Test Group 1-1,text,true,,12228,0,1,1,null,33060,0,0
+1771217766236,146847,run-noref-20260216-030720 - query_78.sql,200,OK,Test Group 1-1,text,true,,158,0,1,1,null,146536,0,0
+1771217913085,30643,run-noref-20260216-030720 - query_79.sql,200,OK,Test Group 1-1,text,true,,4561,0,1,1,null,30507,0,0
+1771217943729,33260,run-noref-20260216-030720 - query_8.sql,200,OK,Test Group 1-1,text,true,,530,0,1,1,null,33119,0,0
+1771217976991,881,run-noref-20260216-030720 - query_80.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 27.02 to int32_t
+
+SqlOperatorImpl FILTER
+Location 26:16:3
+ErrorOrigin: EXECUTOR
+[Error Id: c1cc895b-10a0-4fee-9c6a-7e3f4eff4ce3 on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 27.02 to int32_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1504,0,1,1,null,0,0,0
+1771217977874,10398,run-noref-20260216-030720 - query_81.sql,200,OK,Test Group 1-1,text,true,,13037,0,1,1,null,10166,0,0
+1771217988273,315,run-noref-20260216-030720 - query_82.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 27.02 to int64_t
+
+SqlOperatorImpl FILTER
+Location 7:16:3
+ErrorOrigin: EXECUTOR
+[Error Id: 24c8950f-ef71-48d6-8391-3fde3a709c47 on dremio-executor-tpcds-000-3.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 27.02 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1503,0,1,1,null,0,0,0
+1771217988589,34437,run-noref-20260216-030720 - query_83.sql,null 0,"java.sql.SQLException: FUNCTION ERROR: divide by zero error
+
+SqlOperatorImpl PROJECT
+Location 2:51:1
+ErrorOrigin: EXECUTOR
+[Error Id: 62180421-4315-45e6-96c3-fde6374871a0 on dremio-executor-tpcds-000-0.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) divide by zero error
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateProjector():-2
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():417
+    org.apache.arrow.gandiva.evaluator.Projector.evaluate():251
+    com.dremio.sabot.op.llvm.NativeProjector.execute():99
+    com.dremio.sabot.op.llvm.NativeProjectorBuilder$1.evaluate():122
+    com.dremio.exec.expr.SplitStageExecutor.evaluateProjector():413
+    com.dremio.exec.expr.ExpressionSplitter.projectRecords():808
+    com.dremio.sabot.op.project.ProjectOperator.outputData():303
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.outputData():257
+    com.dremio.sabot.driver.StraightPipe.pump():55
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1453,0,1,1,null,0,0,0
+1771218023027,17999,run-noref-20260216-030720 - query_84.sql,200,OK,Test Group 1-1,text,true,,3825,0,1,1,null,17876,0,0
+1771218041027,1424,run-noref-20260216-030720 - query_85.sql,null 0,"java.sql.SQLException: SYSTEM ERROR: GandivaException: Failed to cast the string 289.72 to int64_t
+
+SqlOperatorImpl FILTER
+Location 4:16:5
+ErrorOrigin: EXECUTOR
+[Error Id: 74134a4e-9877-485a-aeae-98b02405c0ae on dremio-executor-tpcds-000-1.dremio-cluster-pod.dremio-v26.svc.cluster.local:0]
+
+  (org.apache.arrow.gandiva.exceptions.GandivaException) Failed to cast the string 289.72 to int64_t
+    org.apache.arrow.gandiva.evaluator.JniWrapper.evaluateFilter():-2
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():193
+    org.apache.arrow.gandiva.evaluator.Filter.evaluate():158
+    com.dremio.sabot.op.llvm.NativeFilter.filterBatch():108
+    com.dremio.exec.expr.SplitStageExecutor$NativeTimedFilter.apply():501
+    com.dremio.exec.expr.SplitStageExecutor.evaluateFilter():445
+    com.dremio.exec.expr.ExpressionSplitter.filterData():859
+    com.dremio.sabot.op.filter.FilterOperator.consumeData():103
+    com.dremio.sabot.driver.SmartOp$SmartSingleInput.consumeData():312
+    com.dremio.sabot.driver.StraightPipe.pump():58
+    com.dremio.sabot.driver.Pipeline.doPump():134
+    com.dremio.sabot.driver.Pipeline.pumpOnce():124
+    com.dremio.sabot.exec.fragment.FragmentExecutor$DoAsPumper.run():690
+    com.dremio.sabot.exec.fragment.FragmentExecutor.run():595
+    com.dremio.sabot.exec.fragment.FragmentExecutor$AsyncTaskImpl.run():1281
+    com.dremio.sabot.task.AsyncTaskWrapper.run():130
+    com.dremio.sabot.task.slicing.SlicingThread.mainExecutionLoop():281
+    com.dremio.sabot.task.slicing.SlicingThread.run():186
+",Test Group 1-1,text,false,,1505,0,1,1,null,0,0,0
+1771218042452,28349,run-noref-20260216-030720 - query_86.sql,200,OK,Test Group 1-1,text,true,,6197,0,1,1,null,28201,0,0
+1771218070802,59487,run-noref-20260216-030720 - query_87.sql,200,OK,Test Group 1-1,text,true,,16,0,1,1,null,59250,0,0
+1771218130290,920824,run-noref-20260216-030720 - query_88.sql,200,OK,Test Group 1-1,text,true,,163,0,1,1,null,920543,0,0
+1771219051117,105995,run-noref-20260216-030720 - query_89.sql,200,OK,Test Group 1-1,text,true,,10967,0,1,1,null,105875,0,0
+1771219157114,1081008,run-noref-20260216-030720 - query_9.sql,200,OK,Test Group 1-1,text,true,,60,0,1,1,null,1080767,0,0
+1771220238125,179235,run-noref-20260216-030720 - query_90.sql,200,OK,Test Group 1-1,text,true,,35,0,1,1,null,179115,0,0
+1771220417362,7313,run-noref-20260216-030720 - query_91.sql,200,OK,Test Group 1-1,text,true,,2190,0,1,1,null,7176,0,0
+1771220424676,8695,run-noref-20260216-030720 - query_92.sql,200,OK,Test Group 1-1,text,true,,65,0,1,1,null,8545,0,0
+1771220433372,178504,run-noref-20260216-030720 - query_93.sql,200,OK,Test Group 1-1,text,true,,1509,0,1,1,null,178373,0,0
+1771220611877,307142,run-noref-20260216-030720 - query_94.sql,200,OK,Test Group 1-1,text,true,,137,0,1,1,null,306877,0,0
+1771220919022,270508,run-noref-20260216-030720 - query_95.sql,200,OK,Test Group 1-1,text,true,,138,0,1,1,null,270311,0,0
+1771221189531,180529,run-noref-20260216-030720 - query_96.sql,200,OK,Test Group 1-1,text,true,,14,0,1,1,null,180427,0,0
+1771221370061,76352,run-noref-20260216-030720 - query_97.sql,200,OK,Test Group 1-1,text,true,,68,0,1,1,null,76189,0,0
+1771221446414,12118,run-noref-20260216-030720 - query_98.sql,200,OK,Test Group 1-1,text,true,,7132144,0,1,1,null,11764,0,0
+1771221458533,191346,run-noref-20260216-030720 - query_99.sql,200,OK,Test Group 1-1,text,true,,5963,0,1,1,null,191228,0,0

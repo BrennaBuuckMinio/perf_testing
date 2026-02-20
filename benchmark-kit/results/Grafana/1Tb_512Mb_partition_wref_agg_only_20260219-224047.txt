@@ -1,0 +1,7 @@
+Grafana Dashboard: https://grafana-k5.apps.k2.min.dev/d/TgmJnqnnk/minio-dashboard?orgId=1&from=2026-02-19T22:40:00.000Z&to=2026-02-19T22:44:00.000Z&timezone=browser&var-scrape_jobs=$__all
+Time Window (UTC): 2026-02-19 22:40:47 to 2026-02-19 22:43:48
+Time Window (PST): 2026-02-19 14:40:47 to 2026-02-19 14:43:48
+Dataset: 1Tb_512Mb_partition
+Mode: wref (99 queries, aggregate-only reflections, raw disabled, C3 cache enabled, result cache active)
+Run: Phase 3c, Run 3c-1 (measured)
+Screenshots: (not captured)
